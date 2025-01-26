@@ -30,7 +30,7 @@ struct TGAColor {
 		unsigned char raw[4];
 		unsigned int val;
 	};
-	int bytespp;
+	int bytespp;   // 每个像素使用的字节数，1-灰度图，3-RGB，4-RGBA
 
 	TGAColor() : val(0), bytespp(1) {
 	}

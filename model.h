@@ -19,7 +19,7 @@ private:
 	std::vector<Vec3f> normals_;
 	std::vector<std::vector<ids> > faces_;
 
-	// cv::Mat diffuseMap;
+	// cv::Mat diffuseMap;  漫反射贴图
 	TGAImage diffuseMap;
 	// cv::Vec2i diffuseMapSize;
 	Vec2i diffuseMapSize;

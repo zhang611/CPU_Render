@@ -10,7 +10,11 @@
 Model::Model(const char *filename, char * diffusefilename) : verts_(), uvs_(), faces_() {
     std::ifstream in;
     in.open (filename, std::ifstream::in);
-    if (in.fail()) return;
+    if (in.fail()) {
+        std::cerr << "Failed to open file: " << filename << std::endl;
+        return;
+    }
+    
     std::string line;
     while (!in.eof()) {
         std::getline(in, line);

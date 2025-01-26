@@ -6,7 +6,7 @@ if(MSVC)
 endif()
 
 # set(OpenCV_DIR "D:/Computer Science/Library/opencv/build/x64/mybuild")
-set(OpenCV_DIR "D:/Computer Science/Library/opencv/build/x64/vc15/lib")
+set(OpenCV_DIR "E:/Library/opencv/opencv/build/x64/vc16")
 
 find_package(OpenCV REQUIRED)
 message(STATUS "OpenCV library status:")
@@ -18,5 +18,8 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 
 # don't need .h file
 add_executable(${PROJECT_NAME} main.cpp gl.cpp geometry.cpp model.cpp tgaimage.cpp )
+
+# add_executable(${PROJECT_NAME} test.cpp )
+
 # target_link_libraries(${PROJECT_NAME} PRIVATE tga_lib model_lib)
 target_link_libraries( ${PROJECT_NAME} ${OpenCV_LIBS})
