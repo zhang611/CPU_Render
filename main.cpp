@@ -107,7 +107,7 @@ int main(int argc, char **argv)
     }
     else
     {
-        model = new Model("E:/Job/project/CPU_Render//african_head.obj", "E:/Job/project/CPU_Render/obj/african_head_diffuse.tga");
+        model = new Model("obj/african_head.obj", "obj/african_head_diffuse.tga");
     }
     zbuffer = new float[width * height];
     
