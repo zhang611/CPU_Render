@@ -3,6 +3,7 @@
 
 #include "tgaimage.h"
 #include "geometry.h"
+#include "model.h"
 void line(TGAImage & image, int x0, int y0, int x1, int y1, TGAColor color)
 {
     bool steep = false;
@@ -71,7 +72,7 @@ static Vec2f interpolate(float alpha, float beta, float gamma, Vec2f& vert1, Vec
     return Vec2f(u, v);
 }
 
-void triangle(TGAImage & image,Model * model, float * zbuffer, Vec3f * v, Vec2f * coords, float intensity)
+void triangle(TGAImage & image, Model * model, float * zbuffer, Vec3f * v, Vec2f * coords, float intensity)
 {
     int width = image.get_width(), height = image.get_height();
     int minX = (int)std::floor(min(v[0].x, v[1].x, v[2].x));    minX = std::max(minX, 0);
