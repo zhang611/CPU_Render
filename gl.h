@@ -16,20 +16,17 @@ Matrix vertex2matrix(Vec3f v);
 Matrix modelMatrix(float rotation_angle, Vec3f axis = {0, 0, 1});
 Matrix lookAt(Vec3f eyePos, Vec3f& targetPos, Vec3f& up);
 Matrix projection(float eye_fov, float aspect_ratio, float zNear, float zFar);
-Matrix & projdivision(Matrix & clip);
+Matrix& projdivision(Matrix& clip);
 Matrix viewport(int x, int y, int w, int h);
 
-
-struct fragment_shader_payload
-{
-    fragment_shader_payload()
-    {
+struct fragment_shader_payload {
+    fragment_shader_payload() {
         // texture = nullptr;
     }
 
-    fragment_shader_payload(const Vec3f& col, const Vec3f& nor,const Vec2f& tc) :
-         color(col), normal(nor), tex_coords(tc) /*, texture(tex)*/ {}
-    
+    fragment_shader_payload(const Vec3f& col, const Vec3f& nor, const Vec2f& tc)
+        : color(col), normal(nor), tex_coords(tc) /*, texture(tex)*/ {}
+
     Vec3f view_pos;
     Vec3f color;
     Vec3f normal;
@@ -37,13 +34,12 @@ struct fragment_shader_payload
     // Texture* texture;
 };
 
-struct vertex_shader_payload
-{
+struct vertex_shader_payload {
     Vec3f position;
 };
 
 class IShader {
-public:
+   public:
     void setModel(Matrix model) { modelM = model; }
     void setLookAt(Matrix lookat) { lookatM = lookat; }
     void setProj(Matrix proj) { projM = proj; }
@@ -52,11 +48,11 @@ public:
     // 1. transform the coordinates of the vertices
     // 2. prepare data for gragment
     virtual Vec4f vertex(int iface, int nthvert) = 0;
-    //1. determine the color of the current pixel.
-    //2. discard pixel that we don't want
-    virtual bool fragment(Vec3f bar, TGAColor &color) = 0;
+    // 1. determine the color of the current pixel.
+    // 2. discard pixel that we don't want
+    virtual bool fragment(Vec3f bar, TGAColor& color) = 0;
 
-private:
+   private:
     Matrix modelM;
     Matrix lookatM;
     Matrix projM;
