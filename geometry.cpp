@@ -1,10 +1,16 @@
-#include <vector>
+#include "geometry.h"
+
 #include <cassert>
 #include <cmath>
 #include <iostream>
-#include "geometry.h"
+#include <vector>
 
+Matrix::Matrix(int r, int c)
+    : m(std::vector<std::vector<float> >(r, std::vector<float>(c, 0.f))),
+      rows(r),
+      cols(c) {}
 
+<<<<<<< HEAD
 Matrix::Matrix(int r, int c) : m(std::vector<std::vector<float> >(r, std::vector<float>(c, 0.f))), rows(r), cols(c) {}
 
 Matrix::Matrix(std::vector<float> nums) {
@@ -31,14 +37,11 @@ Matrix::Matrix(Vec3f v) {
     m[2][0] = v.z;
 }
 
+=======
+int Matrix::nrows() { return rows; }
+>>>>>>> 5635777f0a4afb69f01ea09271810eee1500cd0d
 
-int Matrix::nrows() {
-    return rows;
-}
-
-int Matrix::ncols() {
-    return cols;
-}
+int Matrix::ncols() { return cols; }
 
 
 double det(Matrix &m) {
@@ -77,7 +80,11 @@ Matrix Matrix::identity(int dimensions) {
     return E;
 }
 
+<<<<<<< HEAD
 std::vector<float> &Matrix::operator[](const int i) {
+=======
+std::vector<float>& Matrix::operator[](const int i) {
+>>>>>>> 5635777f0a4afb69f01ea09271810eee1500cd0d
     assert(i >= 0 && i < rows);
     return m[i];
 }
@@ -120,13 +127,18 @@ Matrix Matrix::operator*(const float b) {
 Matrix Matrix::transpose() {
     Matrix result(cols, rows);
     for (int i = 0; i < rows; i++)
+<<<<<<< HEAD
         for (int j = 0; j < cols; j++)
             result[j][i] = m[i][j];
+=======
+        for (int j = 0; j < cols; j++) result[j][i] = m[i][j];
+>>>>>>> 5635777f0a4afb69f01ea09271810eee1500cd0d
     return result;
 }
 
 Matrix Matrix::inverse() {
     assert(rows == cols);
+<<<<<<< HEAD
     // augmenting the square matrix with the identity matrix of the same dimensions a => [ai]
     Matrix result(rows, cols * 2);
     for (int i = 0; i < rows; i++)
@@ -139,6 +151,18 @@ Matrix Matrix::inverse() {
         // normalize the first row
         for (int j = result.cols - 1; j >= 0; j--)
             result[i][j] /= result[i][i];
+=======
+    // augmenting the square matrix with the identity matrix of the same
+    // dimensions a => [ai]
+    Matrix result(rows, cols * 2);
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < cols; j++) result[i][j] = m[i][j];
+    for (int i = 0; i < rows; i++) result[i][i + cols] = 1;
+    // first pass
+    for (int i = 0; i < rows - 1; i++) {
+        // normalize the first row
+        for (int j = result.cols - 1; j >= 0; j--) result[i][j] /= result[i][i];
+>>>>>>> 5635777f0a4afb69f01ea09271810eee1500cd0d
         for (int k = i + 1; k < rows; k++) {
             float coeff = result[k][i];
             for (int j = 0; j < result.cols; j++) {
@@ -161,12 +185,20 @@ Matrix Matrix::inverse() {
     // cut the identity matrix back
     Matrix truncate(rows, cols);
     for (int i = 0; i < rows; i++)
+<<<<<<< HEAD
         for (int j = 0; j < cols; j++)
             truncate[i][j] = result[i][j + cols];
     return truncate;
 }
 
 std::ostream &operator<<(std::ostream &s, Matrix &m) {
+=======
+        for (int j = 0; j < cols; j++) truncate[i][j] = result[i][j + cols];
+    return truncate;
+}
+
+std::ostream& operator<<(std::ostream& s, Matrix& m) {
+>>>>>>> 5635777f0a4afb69f01ea09271810eee1500cd0d
     for (int i = 0; i < m.nrows(); i++) {
         for (int j = 0; j < m.ncols(); j++) {
             s << m[i][j];
@@ -177,7 +209,11 @@ std::ostream &operator<<(std::ostream &s, Matrix &m) {
     return s;
 }
 
+<<<<<<< HEAD
 Matrix operator*(float b, Matrix &m) {
+=======
+Matrix operator*(float b, Matrix& m) {
+>>>>>>> 5635777f0a4afb69f01ea09271810eee1500cd0d
     Matrix result(m.nrows(), m.ncols());
     for (int i = 0; i < result.nrows(); i++) {
         for (int j = 0; j < result.ncols(); j++) {

@@ -4,8 +4,8 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "D:\\Computer Science\\Library\\opencv\\build\\x64\\mybuild\\install\\include",
-                "D:\\Computer Science\\Library\\opencv\\build\\x64\\mybuild\\install\\include\\opencv2"
+                "E:/Library/opencv/opencv/build/include",
+                "E:/Library/opencv/opencv/build/include/opencv2"
             ],
             "defines": [
                 "_DEBUG",
