@@ -121,9 +121,9 @@ void drawLine() {
 
 
 int main(int argc, char **argv) {
-//    renderModel();
+    renderModel();
 
-    drawLine();
+//    drawLine();
 
     return 0;
 }
