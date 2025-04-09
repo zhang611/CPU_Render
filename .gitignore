@@ -1,4 +1,8 @@
-build
 .vscode
-obj
+.idea
+
+build
+cmake-build-debug
+
+assets/obj
 *.png

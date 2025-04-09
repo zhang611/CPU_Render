@@ -1,5 +1,7 @@
-#ifndef __GL_H__
-#define __GL_H__
+#ifndef GL_H_
+#define GL_H_
+
+#include <utility>
 
 #include "geometry.h"
 #include "tgaimage.h"
@@ -44,13 +46,13 @@ struct vertex_shader_payload
 
 class IShader {
 public:
-    void setModel(Matrix model) { modelM = model; }
-    void setLookAt(Matrix lookat) { lookatM = lookat; }
-    void setProj(Matrix proj) { projM = proj; }
-    void setViewPort(Matrix viewport) { viewportM = viewport; }
+    void setModel(Matrix model) { modelM = std::move(model); }
+    void setLookAt(Matrix lookat) { lookatM = std::move(lookat); }
+    void setProj(Matrix proj) { projM = std::move(proj); }
+    void setViewPort(Matrix viewport) { viewportM = std::move(viewport); }
     virtual ~IShader();
     // 1. transform the coordinates of the vertices
-    // 2. prepare data for gragment
+    // 2. prepare data for fragment
     virtual Vec4f vertex(int iface, int nthvert) = 0;
     //1. determine the color of the current pixel.
     //2. discard pixel that we don't want
